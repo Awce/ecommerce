@@ -1,0 +1,13 @@
+extends ../layout.pug
+
+block content
+  form(action="", method='post')
+    input(type="text", name="name")
+    input(type="number", name="price")
+    input(type="text", name="productImageURL")
+    input(type="text", name="description")
+    select(name="category")
+      option(value="CHIDOS") CHIDOS
+      option(value="MAS CHIDOS") MAS CHIDOS
+      option(value="SUPER CHIDOS") SUPER CHIDOS
+    input(type="submit", value="Guardar🔥")

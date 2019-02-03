@@ -1,0 +1,26 @@
+extends ../layout.pug
+
+block content
+  .hero-body
+    div(class="container has-text-centered")
+      div(class="columns is-vcentered")
+        div(class="column is-5")
+          figure(class="image is-4by3")
+            img(src=productImageURL, alt=name)
+        div(class="column is-6 is-offset-1")
+          h1(class="title is-2") #{name}
+          h2(class="subtitle is-4") $ #{price}.00
+          p #{description}
+          span #{category} 
+          br
+          p(class="has-text-centered")
+            form(action="/cart/add/", method="post")
+              input(type="hidden", name="productId", value=productId)
+              input(class="button is-medium is-info is-outlined" type="submit", value="Agregar al carrito")
+
+
+      
+
+
+
+                

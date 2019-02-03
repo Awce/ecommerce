@@ -1,0 +1,25 @@
+extends ./layout.pug
+
+block content
+
+  div
+    span Name | 
+    span Price | 
+    span Quantity | 
+    span Subtotal 
+
+  each p in products
+    -var productId = p.product._id
+    div
+      span #{p.product.name} | 
+      span $#{p.product.price} |
+      span
+        form(action="/cart/remove", method="post")
+          input(type="hidden", name="productId", value=productId)
+          input(type="submit", value=" - ") 
+      span #{p.quantity} | 
+      span
+        form(action="/cart/add", method="post")
+          input(type="hidden", name="productId", value=productId)
+          input(type="submit", value=" + ")
+      span #{p.product.price * p.quantity}

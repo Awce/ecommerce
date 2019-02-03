@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Stickets Chidos | Son Mexicanos pero no estan culeros...
+
+  body
+    nav(class="navbar" role="navigation" aria-label="main navigation")
+      div.navbar-brand
+        a(class="navbar-item" href="/")
+          img(src="http://memesounds.com/pr/wp-content/uploads/2016/04/MEME-M_logo_solid_circle_200px.png" )
+        span(class="navbar-burger burger" data-target="navbarMenu")
+          span
+          span
+          span
+        div(id="navbarMenu" class="navbar-menu")
+          div.navbar-end
+            a(href="/products" class="navbar-item") Stickers
+            a(href="/cart" class="navbar-item") Cart
+            a(href="/products/new" class="navbar-item") Admin
+
+
+    block content
+  head
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.css.map')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+  footer.footer
+    .container
+      div(class="content has-text-centered")
+        .soc
+          a(href="/products" class="navbar-item") Stickers
+          a(href="/products/new" class="navbar-item") + Agregar Stickers
+        p
+          strong #{title} 2019
