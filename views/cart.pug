@@ -12,7 +12,7 @@ block content
     -var productId = p.product._id
     div
       span #{p.product.name} | 
-      span $#{p.product.price} |
+      span $ #{p.product.price}.00 |
       span
         form(action="/cart/remove", method="post")
           input(type="hidden", name="productId", value=productId)
@@ -22,4 +22,5 @@ block content
         form(action="/cart/add", method="post")
           input(type="hidden", name="productId", value=productId)
           input(type="submit", value=" + ")
-      span #{p.product.price * p.quantity}
+      
+      h3 $ #{p.product.price * p.quantity}.00

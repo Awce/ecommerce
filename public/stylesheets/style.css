@@ -1,0 +1,18 @@
+h1 {
+  padding: 20px; }
+
+.call-to-action {
+  transition: 0.3s ease; }
+
+.call-to-action:hover {
+  transform: scale(1.2); }
+
+.cover {
+  background-image: url("../images/cover.jpg");
+  background-position: top;
+  background-size: cover; }
+
+.list {
+  vertical-align: auto; }
+
+/*# sourceMappingURL=style.css.map */

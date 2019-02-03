@@ -1,23 +1,24 @@
 extends ../layout.pug
 
 block content
+  
+  h1.title Stickers
 
-  each p in products
-    -var productId = p._id
-    section.container 
-      div(class="columns features")
-        div(class="column is-4")
-          div("card is-shady")
-            figure(class="image is-4by3")
-                img(class="is-128x128" src=`${p.productImageURL}`)
-            .card-content
-              h3(class="title is-3")
-                a(href="/products/detail/" + productId) #{p.name}
-              h4.subtitle $ #{p.price}.00
-              footer.card-footer
-                form(action="/cart/add/", method="post")
-                  input(type="hidden", name="productId", value=productId)
-                  input(type="submit", class="button is-primary" value="Agregar al Carrito")
+    div(class="columns is-3-desktop is-gapless")
+      div(class="column")
+        each p in products
+          -var productId = p._id
+            div("card is-shady")
+              figure(class="image is-4by3")
+                  img(class="is-128x128" src=`${p.productImageURL}`)
+              .card-content
+                h3(class="title is-3")
+                  a(href="/products/detail/" + productId) #{p.name}
+                h4.subtitle $ #{p.price}.00
+                footer.card-footer
+                  form(action="/cart/add/", method="post")
+                    input(type="hidden", name="productId", value=productId)
+                    input(type="submit", class="button is-primary" value="Agregar al Carrito")
 
 
 

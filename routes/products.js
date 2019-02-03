@@ -26,7 +26,7 @@ router.get('/cart', (req,res) => {
   req.render('products/cart')
 })
 
-router.post('/new',(req, res)=>{
+router.post('/new',(req, res) => {
   console.log(req.body)
   Product.create(req.body)
     .then(product=>{
@@ -34,22 +34,32 @@ router.post('/new',(req, res)=>{
     }).catch(e=>res.render('error'))
 })
 
-//update
-router.post('detail/:productId/update', (req,res) => {
-  Product.findByIdAndUpdate(req.params.productId, {$set: req.body}, {new: true})
-    .then(product => {
-      console.log(product);
-      res.redirect(`/products`);
-      // res.redirect('back')
-    }).catch(e=>res.render('error'))
-});
+// Nuevas rutas 
+router.post('/new', (req, res) => {
+  console.log(req.body)
+  const newProduct = new Product(req.body)
+  req.body.inOffer === 'on' ? newProduct.inOffer = true : null
+  req.body.inStock === 'on' ? newProduct.inStock = true : null
+  newProduct.save()
+    .then(product=> {
+      res.redirect('/products/')
+    })
+    .catch(err=>res.render('error'))
+})
 
-//remove
-router.post('/product/:productId', (req,res) => {
-  Product.findByIdAndRemove(req.params.productId)
-  .then(product => {
-      req.redirect('products', product)
-  }).catch(e=>res.render('error'))
+router.post('/search', (req, res) => {
+  console.log(req.body)
+  Product.find({name: {$regex: req.body.search, $options: "i"}})
+    .then((products)=>{
+      console.log(products)
+      res.render('products/list', {products, search: true, searched: req.body.search})
+    })
+    .catch((err)=>console.log(err))
+})
+
+router.post('/filter_by', (req, res) => {
+  Product.find({category: req.body.category})
+    .then((products)=>res.render('products/list', {products, filter: true, filtered: req.body.category}))
 })
 
 module.exports = router
